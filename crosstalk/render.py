@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import html
 import json
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -96,10 +95,8 @@ code {{ overflow-wrap: anywhere; }} .missing {{ color: #b33; }} .outcome {{ font
 </style></head><body>
 <header><h1>{stream}</h1><p>{states} states · {transitions} transitions · {receipts} receipts</p></header>
 <main>{cards}</main>
-<footer><p class="meta">Generated {generated}</p></footer>
 </body></html>""".format(
         stream=html.escape(lineage.stream),
-        generated=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         states=len(lineage.states),
         transitions=len(lineage.transitions),
         receipts=len(lineage.receipts),
